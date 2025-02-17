@@ -4,6 +4,11 @@ export type NavBarLink = {
   external?: boolean;
 };
 
+export type FooterContent = {
+  year: number;
+  techStack: string[];
+}
+
 export type SocialLink = {
   title: string;
   url: string;

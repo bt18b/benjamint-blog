@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
-import { navBarLinks, identity } from "../config";
+import { navBarLinks, identity, footerContent } from "../config";
 import type { SEOInfo } from "../types/config";
 
 interface Props {
@@ -131,7 +131,12 @@ const { seo } = Astro.props;
     <main class="mb-32">
       <slot />
     </main>
-    <footer></footer>
+    <footer class="px-6 py-6 max-w-2xl mx-auto text-sm opacity-60 mt-20 mb-12">
+      <p>
+        {footerContent.year} © Benjamin Tannheimer
+      </p>
+      <p>Built with {((t) => t.length > 1 ? `${t.slice(0, -1).join(", ")} and ${t.at(-1)}` : t[0] || "")(footerContent.techStack)}</p>
+    </footer>
   </body>
 </html>
 

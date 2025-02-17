@@ -1,5 +1,6 @@
 import type {
   NavBarLink,
+  FooterContent,
   SocialLink,
   Identity,
   AboutPageContent,
@@ -33,6 +34,15 @@ export const navBarLinks: NavBarLink[] = [
     url: "/blog",
   },
 ];
+
+export const footerContent: FooterContent = {
+    year: new Date().getFullYear(),
+    techStack: [
+      "Astro",
+      "React",
+      "Tailwind"
+    ]
+}
 
 export const socialLinks: SocialLink[] = [
   {
