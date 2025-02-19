@@ -1,0 +1,10 @@
+---
+import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
+import { Button } from "@/components/ui/button";
+---
+
+<Button variant="ghost" size="icon" id="search">
+  <MagnifyingGlassIcon className="h-[1.5rem] w-[1.3rem] dark:hidden" />
+  <MagnifyingGlassIcon className="hidden h-5 w-5 dark:block" />
+  <span class="sr-only">Search</span>
+</Button>
