@@ -1,7 +1,8 @@
 ---
-import { buttonVariants } from "@/components/ui/button";
-import ThemeToggle from "@/components/ThemeToggle.astro";
+import { ModeToggle } from '@/components/ModeToggle';
+import Search from "@/components/Search";
 import MobileMenu from "@/components/MobileMenu";
+import { navBarLinks } from '@/config'
 ---
 
 <header
@@ -15,24 +16,19 @@ import MobileMenu from "@/components/MobileMenu";
         <MobileMenu client:load />
       </div>
       <!-- Desktop: Logo or Home Link -->
-      <a href="/" class="hidden sm:flex items-center space-x-2">
-        <span class="inline-block font-bold">Home</span>
-      </a>
+      <nav class="hidden sm:flex items-center space-x-4">
+        {navBarLinks.map((lnk) => (
+          <a href={lnk.url} class="flex items-center">
+            <span class="inline-block font-bold">{lnk.title}</span>
+          </a>
+        ))}
+      </nav>
     </div>
 
-    <!-- Right side: Theme Toggle and (on desktop) GitHub link -->
+    <!-- Right side: Theme Toggle -->
     <div class="flex items-center space-x-4">
-      <!-- Desktop-only GitHub link -->
-      <!-- <a
-        href="https://github.com/AREA44/astro-shadcn-ui-template"
-        target="_blank"
-        rel="noreferrer"
-        class={`hidden sm:inline-flex ${buttonVariants({ variant: 'ghost' })}`}
-      >
-        GitHub
-      </a> -->
-      <!-- Theme Toggle (always visible) -->
-      <ThemeToggle client:load />
+      <Search client:load />
+      <ModeToggle client:load />
     </div>
   </div>
 </header>

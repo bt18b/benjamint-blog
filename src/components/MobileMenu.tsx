@@ -2,8 +2,9 @@
 import React from 'react';
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
-import { SheetTitle } from "@/components/ui/sheet";  // Import SheetTitle
+import { SheetTitle } from "@/components/ui/sheet";
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
+import { navBarLinks } from '@/config'
 
 export default function MobileMenu() {
   return (
@@ -12,22 +13,17 @@ export default function MobileMenu() {
         <Menu className="w-6 h-6" />
       </SheetTrigger>
       <SheetContent side="left" className="w-64">
-        {/* Add a SheetTitle */}
         <VisuallyHidden>
             <SheetTitle>
                 Mobile Menu
             </SheetTitle>
         </VisuallyHidden>
         <nav className="flex flex-col space-y-4 ms-8 mt-8">
-          <a href="/" className="text-lg font-semibold">Home</a>
-          <a
-            href="https://github.com/AREA44/astro-shadcn-ui-template"
-            target="_blank"
-            rel="noreferrer"
-            className="text-lg font-semibold"
-          >
-            GitHub
-          </a>
+            {navBarLinks.map((lnk, index) => (
+                <a key={index} href={lnk.url} className="text-lg font-semibold">
+                    <span className="inline-block font-bold">{lnk.title}</span>
+                </a>  
+            ))}
         </nav>
       </SheetContent>
     </Sheet>
