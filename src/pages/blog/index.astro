@@ -1,0 +1,68 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { blogPageContent } from "@/config";
+import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
+
+// Sample blog posts data (replace with actual blog fetching logic)
+const postsPerPage = 5;
+const blogPosts = [
+  { title: "Understanding Astro.js", slug: "understanding-astro", date: "2024-02-20", excerpt: "A beginner-friendly guide to Astro.js and its features." },
+  { title: "Tailwind CSS Best Practices", slug: "tailwind-css-best-practices", date: "2024-01-15", excerpt: "Optimize your Tailwind CSS workflow with these best practices." },
+  { title: "How to Use shadcn with Astro", slug: "shadcn-astro", date: "2024-01-05", excerpt: "Learn how to integrate shadcn UI components into your Astro project." },
+  { title: "Setting Up Astro with Markdown", slug: "astro-markdown-setup", date: "2023-12-25", excerpt: "Step-by-step guide on using Markdown for blogs in Astro." },
+  { title: "Improving Web Performance", slug: "web-performance-tips", date: "2023-12-10", excerpt: "Essential techniques for making your websites faster." },
+  { title: "The Power of Serverless", slug: "serverless-advantages", date: "2023-11-30", excerpt: "Why serverless architecture is shaping the future of web development." },
+];
+
+// Pagination logic
+const pageParam = Astro.url.searchParams.get("page");
+const currentPage = pageParam ? parseInt(pageParam, 10) : 1;
+const totalPosts = blogPosts.length;
+const totalPages = Math.ceil(totalPosts / postsPerPage);
+const start = (currentPage - 1) * postsPerPage;
+const end = start + postsPerPage;
+const paginatedPosts = blogPosts.slice(start, end);
+---
+
+<BaseLayout
+  title="Blog | Benjamin Tannheimer"
+  description="Thoughts, stories, and ideas on web development, software, and more."
+>
+  <section class="container grid items-center gap-6 pt-6 pb-8 md:py-10">
+    <div class="flex flex-col items-start gap-4 max-w-[980px]">
+      <h1 class="text-3xl leading-tight font-extrabold tracking-tighter md:text-4xl">
+        { blogPageContent.subtitle }
+      </h1>
+      <p class="text-muted-foreground max-w-[700px] text-lg">
+        { blogPageContent.seo.description }
+      </p>
+    </div>
+
+    <!-- Blog Post List -->
+    <div class="flex flex-col gap-6">
+      {paginatedPosts.map((post) => (
+        <a href={`/blog/${post.slug}`} class="border rounded-lg p-6 shadow-md hover:shadow-lg transition duration-300 flex flex-col">
+          <h2 class="text-xl font-bold">{post.title}</h2>
+          <p class="text-sm text-muted-foreground">{post.date}</p>
+          <p class="mt-2 text-muted-foreground">{post.excerpt}</p>
+          <Button variant="link" className="mt-4">Read More</Button>
+        </a>
+      ))}
+    </div>
+
+    <!-- Pagination -->
+    <div class="flex justify-center mt-8 space-x-4">
+      {currentPage > 1 && (
+        <a href={`/blog?page=${currentPage - 1}`} class={buttonVariants({ variant: 'outline' })}>
+          Previous
+        </a>
+      )}
+      {currentPage < totalPages && (
+        <a href={`/blog?page=${currentPage + 1}`} class={buttonVariants({ variant: 'outline' })}>
+          Next
+        </a>
+      )}
+    </div>
+  </section>
+</BaseLayout>

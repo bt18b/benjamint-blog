@@ -1,0 +1,63 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { buttonVariants } from "@/components/ui/button";
+import { projectsPageContent } from "@/config";
+import { Button } from "@/components/ui/button";
+
+const projectsPerPage = 6; // More projects per page to balance the layout
+const pageParam = Astro.url.searchParams.get("page");
+const currentPage = pageParam ? parseInt(pageParam, 10) : 1;
+
+const totalProjects = projectsPageContent.projects.length;
+const totalPages = Math.ceil(totalProjects / projectsPerPage);
+const start = (currentPage - 1) * projectsPerPage;
+const end = start + projectsPerPage;
+const paginatedProjects = projectsPageContent.projects.slice(start, end);
+---
+
+<BaseLayout
+  title="Projects | Benjamin Tannheimer"
+  description="Check out what I've been working on."
+>
+  <section class="container grid items-center gap-6 pt-6 pb-8 md:py-10">
+    <div class="flex flex-col items-start gap-4 max-w-[980px]">
+      <h1 class="text-3xl leading-tight font-extrabold tracking-tighter md:text-4xl">
+        { projectsPageContent.subtitle }
+      </h1>
+      <p class="text-muted-foreground max-w-[700px] text-lg">
+        { projectsPageContent.seo.description }
+      </p>
+    </div>
+
+    <!-- Project Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {paginatedProjects.map((project) => (
+        <div class="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 flex flex-col">
+          <img src={project.image} alt={project.title} class="w-full h-64 object-cover" />
+          <div class="p-6 flex flex-col flex-grow">
+            <h2 class="text-xl font-bold">{project.title}</h2>
+            <p class="text-sm text-muted-foreground">{project.year}</p>
+            <p class="mt-2 text-muted-foreground flex-grow">{project.description}</p>
+            <a href={project.url} target="_blank" class="inline-block mt-4">
+              <Button variant="default">View Project</Button>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Pagination -->
+    <div class="flex justify-center mt-8 space-x-4">
+      {currentPage > 1 && (
+        <a href={`/projects?page=${currentPage - 1}`} class={buttonVariants({ variant: 'outline' })}>
+          Previous
+        </a>
+      )}
+      {currentPage < totalPages && (
+        <a href={`/projects?page=${currentPage + 1}`} class={buttonVariants({ variant: 'outline' })}>
+          Next
+        </a>
+      )}
+    </div>
+  </section>
+</BaseLayout>
