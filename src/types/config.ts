@@ -50,14 +50,6 @@ export type NavBarLink = {
     subtitle: string;
     about: {
       description: string;
-      image_l: {
-        url: string;
-        alt: string;
-      };
-      image_r: {
-        url: string;
-        alt: string;
-      };
     };
     work: {
       description: string;

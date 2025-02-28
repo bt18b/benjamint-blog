@@ -1,22 +1,61 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { buttonVariants } from "@/components/ui/button";
+import { getCollection, render } from "astro:content";
+import { Image } from "astro:assets";
+import { identity } from "../../config";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map(post => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { id } = Astro.params;
+const { post } = Astro.props;
+
+const { Content, remarkPluginFrontmatter } = await render(post);
 ---
 
 <BaseLayout
-  title="Post Page"
-  description="Post Page"
+  seo={{
+    title: post.data.title,
+    description: post.data.description,
+    image: post.data.image.url,
+  }}
 >
-  <section class="container grid items-center gap-6 pt-6 pb-8 md:py-10">
-    <div class="flex max-w-[980px] flex-col items-start gap-2">
-      <h1
-        class="text-3xl leading-tight font-extrabold tracking-tighter md:text-4xl"
-      >
-        Post Page
-      </h1>
-      <p class="text-muted-foreground max-w-[700px] text-lg">
-        Post Page content
+  <h1 class="font-bold text-3xl mb-4">{post.data.title}</h1>
+  <p class="opacity-60 mb-6">
+    {post.data.description}
+  </p>
+  <div class="flex gap-4 mb-6">
+    <Image
+      src={identity.logo}
+      alt={identity.name}
+      width={48}
+      height={48}
+      class="w-[48px] aspect-square object-cover rounded-full"
+    />
+    <div>
+      <p class="font-medium">{identity.name}</p>
+      <p class="opacity-60">
+        {post.data.pubDate.toLocaleDateString()} · {
+          remarkPluginFrontmatter.minutesRead
+        }
       </p>
     </div>
-  </section>
+  </div>
+  <Image
+    src={post.data.image.url}
+    alt={post.data.image.alt}
+    width={800}
+    height={300}
+    class="apsect-video w-full rounded-xl mb-10"
+  />
+  <article
+    class="prose prose-invert prose-a:text-blue-300 prose-a:underline-offset-4 prose-headings:mb-2 prose-p:text-[#b3b3b3]"
+  >
+    <Content />
+  </article>
 </BaseLayout>

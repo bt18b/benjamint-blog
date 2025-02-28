@@ -3,8 +3,11 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
-  title="Credits Page"
-  description="Credits Page"
+  seo={{
+    title: "Credits Page",
+    description: "Credits Page",
+    image: "og-image.png"
+  }}
 >
   <section class="container grid items-center gap-6 pt-6 pb-8 md:py-10">
     <div class="flex max-w-[980px] flex-col items-start gap-2">

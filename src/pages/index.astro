@@ -4,19 +4,57 @@ import { buttonVariants } from "@/components/ui/button";
 ---
 
 <BaseLayout
-  title="Home Page"
-  description="Home Page"
+  seo={{
+    title: "Benjamin Tannheimer | Web Developer & Software Engineer",
+    description: "Welcome to the portfolio of Benjamin Tannheimer, a passionate web developer specializing in modern web technologies and software engineering.",
+    image: "og-image.png"
+  }}
 >
-  <section class="container grid items-center gap-6 pt-6 pb-8 md:py-10">
-    <div class="flex max-w-[980px] flex-col items-start gap-2">
-      <h1
-        class="text-3xl leading-tight font-extrabold tracking-tighter md:text-4xl"
-      >
-        Home Page
-      </h1>
-      <p class="text-muted-foreground max-w-[700px] text-lg">
-        Home Page content
+  <section class="container mx-auto px-4 py-12">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Welcome to My Digital World</h1>
+      <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        Exploring the frontiers of web development and software engineering
       </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 p-6">
+        <h2 class="text-2xl font-bold mb-4">About Me</h2>
+        <p class="text-gray-600 dark:text-gray-300">
+          I'm Benjamin Tannheimer, a passionate web developer with expertise in modern technologies. I love creating efficient, scalable, and user-friendly web applications.
+        </p>
+        <a href="/about" class={buttonVariants({ variant: 'link' }) + " mt-4"}>Learn More</a>
+      </div>
+
+      <div class="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 p-6">
+        <h2 class="text-2xl font-bold mb-4">My Projects</h2>
+        <p class="text-gray-600 dark:text-gray-300">
+          Explore my portfolio of web applications, open-source contributions, and experiments with cutting-edge technologies.
+        </p>
+        <a href="/projects" class={buttonVariants({ variant: 'link' }) + " mt-4"}>View Projects</a>
+      </div>
+
+      <div class="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 p-6">
+        <h2 class="text-2xl font-bold mb-4">Blog & Insights</h2>
+        <p class="text-gray-600 dark:text-gray-300">
+          Read my latest thoughts on web development trends, coding best practices, and tech industry insights.
+        </p>
+        <a href="/blog" class={buttonVariants({ variant: 'link' }) + " mt-4"}>Read Blog</a>
+      </div>
+    </div>
+
+    <div class="mt-12 text-center">
+      <h2 class="text-2xl font-bold mb-4">Let's Connect</h2>
+      <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-6">
+        Interested in collaborating or just want to say hi? I'm always open to new opportunities and connections.
+      </p>
+      <a 
+        href="/contact"
+        class={buttonVariants({ variant: 'default' })}
+      >
+        Get in Touch
+      </a>
     </div>
   </section>
 </BaseLayout>

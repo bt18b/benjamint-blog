@@ -10,7 +10,7 @@ import type {
   
   export const identity: Identity = {
     name: "Benjamin Tannheimer",
-    logo: "/logo.webp",
+    logo: "/pfp.jpg",
     email: "benjamin.tannheimer@proton.me",
   };
   
@@ -30,6 +30,10 @@ import type {
     {
       title: "Blog",
       url: "/blog",
+    },
+    {
+      title: "Resume",
+      url: "/resume.pdf",
     },
   ];
   
@@ -85,15 +89,7 @@ import type {
   I'm Benjamin Tannheimer, a full time student from Germany who also loves building cool things using code.
   <br/><br/>
   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque placeat est architecto tempora voluptatem sit suscipit aspernatur? <br/><br/>
-  Facere quibusdam reiciendis, distinctio sunt praesentium error accusantium consectetur nemo vero officia itaque.`, // Markdown is supported
-      image_l: {
-        url: "/demo-1.jpg",
-        alt: "Left Picture",
-      },
-      image_r: {
-        url: "/demo-1.jpg",
-        alt: "Right Picture",
-      },
+  Facere quibusdam reiciendis, distinctio sunt praesentium error accusantium consectetur nemo vero officia itaque.`
     },
     work: {
       description: `I've worked with a variety of technologies and tools to build cool things. Here are some of the projects I've worked on.`, // Markdown is supported
@@ -102,7 +98,7 @@ import type {
           title: "Software Developer",
           company: {
             name: "Freelance",
-            image: "/logo.webp",
+            image: "/pfp.jpg",
             url: "https://github.com/bt18b",
           },
           date: "2021 - Present",
@@ -111,7 +107,7 @@ import type {
           title: "Software Developer",
           company: {
             name: "Freelance",
-            image: "/logo.webp",
+            image: "/pfp.jpg",
             url: "https://github.com/bt18b",
           },
           date: "2019 - 2021",
