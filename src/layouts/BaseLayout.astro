@@ -1,7 +1,7 @@
 ---
-import HeadSEO from "@/components/HeadSEO.astro";
-import Footer from "@/components/Footer.astro";
-import Header from "@/components/Header.astro";
+import HeadSEO from "@/components/layout/HeadSEO.astro";
+import Footer from "@/components/layout/Footer.astro";
+import Header from "@/components/layout/Header.astro";
 import type { SEOInfo } from "../types/config";
 
 interface Props {
@@ -36,7 +36,7 @@ const imgUrl = new URL(`${Astro.site}${seo.image}`);
     <HeadSEO title={seo.title} description={seo.description} image={imgUrl} />
   </head>
   <body class="bg-background min-h-screen font-sans antialiased">
-    <div class="relative flex min-h-screen flex-col">
+	<div class="relative flex min-h-screen flex-col" data-pagefind-body>
       <Header />
       <main class="flex-auto">
         <section class="mt-10 max-w-6xl mx-auto px-6">

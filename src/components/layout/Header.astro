@@ -1,6 +1,6 @@
 ---
 import { ModeToggle } from '@/components/ModeToggle';
-import Search from "@/components/Search";
+import { Search } from "@/components/Search";
 import RssFeed from "@/components/RssFeed";
 import MobileMenu from "@/components/MobileMenu";
 import { navBarLinks } from '@/config'
@@ -28,8 +28,8 @@ import { navBarLinks } from '@/config'
 
     <!-- Right side: Theme Toggle -->
     <div class="flex items-center space-x-4">
-      <RssFeed client:load />
       <Search client:load />
+      <RssFeed client:load />
       <ModeToggle client:load />
     </div>
   </div>

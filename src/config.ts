@@ -1,17 +1,31 @@
+import { makeSEOTitle } from "./lib/utils";
 import type {
     NavBarLink,
     SocialLink,
+    Position,
     Identity,
     AboutPageContent,
     ProjectPageContent,
     BlogPageContent,
+    CreditPageContent,
+    ContactPageContent,
+    NotFoundPageContent,
     HomePageContent,
   } from "./types/config";
   
+  export const position: Position = {
+    position: "ICT Systemspecialist I",
+    title: "Swiss Armed Forces",
+    url: "https://www.vtg.admin.ch/en",
+    external: true
+  };
+
   export const identity: Identity = {
     name: "Benjamin Tannheimer",
     logo: "/pfp.jpg",
-    email: "benjamin.tannheimer@proton.me",
+    email: "benjamintannheimer [at] protonmail [dot] com",
+    countryCode: "CH", // use the two letter iso code
+    country: "Switzerland",
   };
   
   export const navBarLinks: NavBarLink[] = [
@@ -41,35 +55,46 @@ import type {
     {
       title: "GitHub",
       url: "https://github.com/bt18b",
-      icon: "mdi:github",
+      icon: "Github",
       external: true,
     },
     {
       title: "Mail",
-      url: "mailto:benjamin.tannheimer@proton.me",
-      icon: "mdi:email",
+      url: "mailto:benjamintannheimer [at] protonmail [dot] com",
+      icon: "Mail",
+      external: true,
+    },
+    {
+      title: "LinkedIn",
+      url: "https://example.com",
+      icon: "Linkedin",
+      external: true,
     },
   ];
   
   // Home (/)
   export const homePageContent: HomePageContent = {
     seo: {
-      title: "Benjamin Tannheimer",
+      title: makeSEOTitle("Home", identity.name),
       description:
-        "Full time student from Germany who loves building cool things using code.",
+        "Employee from Switzerland who loves building cool things using code.",
       image: identity.logo,
+    },
+    page: {
+      title: "Welcome to My Digital World",
+      subtitle: "Exploring the frontiers of web development and software engineering "
     },
     role: "Student & Software Developer",
     description:
-      "I'm Benjamin Tannheimer, a full time student from Germany who also loves building cool things using code.",
+      "I'm Benjamin Tannheimer, a employee from Switzerland who also loves building cool things using code.",
     socialLinks: socialLinks,
     links: [
       {
-        title: "My Projects",
+        title: "Projects",
         url: "/projects",
       },
       {
-        title: "About Me",
+        title: "About",
         url: "/about",
       },
     ],
@@ -78,15 +103,18 @@ import type {
   // About (/about)
   export const aboutPageContent: AboutPageContent = {
     seo: {
-      title: "About | Benjamin Tannheimer",
+      title: makeSEOTitle("About", identity.name),
       description:
-        "Full time student from Germany who loves building cool things using code.",
+        "employee from Switzerland who loves building cool things using code.",
       image: identity.logo,
     },
-    subtitle: "Some information about myself",
+    page: {
+      title: "Hi, I'm Benjamin Tannheimer 👋",
+      subtitle: "Passionate software developer with a love for web technologies, open-source projects, and automation."
+    },
     about: {
       description: `
-  I'm Benjamin Tannheimer, a full time student from Germany who also loves building cool things using code.
+  I'm Benjamin Tannheimer, a employee from Switzerland who also loves building cool things using code.
   <br/><br/>
   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque placeat est architecto tempora voluptatem sit suscipit aspernatur? <br/><br/>
   Facere quibusdam reiciendis, distinctio sunt praesentium error accusantium consectetur nemo vero officia itaque.`
@@ -123,11 +151,14 @@ import type {
   // Projects (/projects)
   export const projectsPageContent: ProjectPageContent = {
     seo: {
-      title: "Projects | Benjamin Tannheimer",
+      title: makeSEOTitle("Projects", identity.name),
       description: "Check out what I've been working on.",
       image: identity.logo,
     },
-    subtitle: "Check out what I've been working on.",
+    page: {
+      title: "Projects",
+      subtitle: "Check out what I've been working on"
+    },
     projects: [
       {
         title: "Project 1",
@@ -156,9 +187,51 @@ import type {
   // Blog (/blog)
   export const blogPageContent: BlogPageContent = {
     seo: {
-      title: "Blog | Benjamin Tannheimer",
+      title: makeSEOTitle("Blog", identity.name),
       description: "Thoughts, stories and ideas.",
       image: identity.logo,
     },
-    subtitle: "Thoughts, stories and ideas.",
+    page: {
+      title: "Blog",
+      subtitle: "Thoughts and ideas"
+    },
+  };
+
+  // Credits (/credits)
+  export const creditPageContent: CreditPageContent = {
+    seo: {
+      title: makeSEOTitle("Credit", identity.name),
+      description: "Credits",
+      image: identity.logo,
+    },
+    page: {
+      title: "Credits",
+      subtitle: "Some cool people I got inspiration from"
+    },
+  };
+
+  // Contact (/contact)
+  export const contactPageContent: ContactPageContent = {
+    seo: {
+      title: makeSEOTitle("Contact", identity.name),
+      description: "Contact",
+      image: identity.logo,
+    },
+    page: {
+      title: "Contact",
+      subtitle: "Wanna talk? Reach out to me"
+    },
+  };
+
+  // 404 (/404)
+  export const notFoundPageContent: NotFoundPageContent = {
+    seo: {
+      title: makeSEOTitle("404", identity.name),
+      description: "404",
+      image: identity.logo,
+    },
+    page: {
+      title: "404",
+      subtitle: "Page not found"
+    },
   };

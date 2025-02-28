@@ -1,8 +1,8 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageLayout from "@/components/page/PageLayout.astro";
 import { getCollection, render } from "astro:content";
 import { Image } from "astro:assets";
-import { identity } from "../../config";
+import { identity } from "@/config";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -18,34 +18,20 @@ const { post } = Astro.props;
 const { Content, remarkPluginFrontmatter } = await render(post);
 ---
 
-<BaseLayout
+<PageLayout
   seo={{
     title: post.data.title,
     description: post.data.description,
     image: post.data.image.url,
   }}
+  page={{
+    title: post.data.title
+  }}
+  backlink={{
+    title: "Back to posts",
+    url: "/blog"
+  }}
 >
-  <h1 class="font-bold text-3xl mb-4">{post.data.title}</h1>
-  <p class="opacity-60 mb-6">
-    {post.data.description}
-  </p>
-  <div class="flex gap-4 mb-6">
-    <Image
-      src={identity.logo}
-      alt={identity.name}
-      width={48}
-      height={48}
-      class="w-[48px] aspect-square object-cover rounded-full"
-    />
-    <div>
-      <p class="font-medium">{identity.name}</p>
-      <p class="opacity-60">
-        {post.data.pubDate.toLocaleDateString()} · {
-          remarkPluginFrontmatter.minutesRead
-        }
-      </p>
-    </div>
-  </div>
   <Image
     src={post.data.image.url}
     alt={post.data.image.alt}
@@ -57,5 +43,23 @@ const { Content, remarkPluginFrontmatter } = await render(post);
     class="prose prose-invert prose-a:text-blue-300 prose-a:underline-offset-4 prose-headings:mb-2 prose-p:text-[#b3b3b3]"
   >
     <Content />
+    <br />
+    <div class="flex gap-4 mb-6">
+      <Image
+        src={identity.logo}
+        alt={identity.name}
+        width={48}
+        height={48}
+        class="w-12 h-12 rounded-full object-cover"
+      />
+      <div>
+        <p class="font-medium">{identity.name}</p>
+        <p class="opacity-60">
+          {post.data.pubDate.toLocaleDateString()} · {
+            remarkPluginFrontmatter.minutesRead
+          }
+        </p>
+      </div>
+    </div>
   </article>
-</BaseLayout>
+</PageLayout>

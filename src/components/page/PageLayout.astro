@@ -1,0 +1,29 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHeader from "@/components/page/PageHeader.astro";
+import type { BaseLink, PageContent, SEOInfo } from "@/types/config";
+
+
+interface Props {
+    seo: SEOInfo;
+    page: PageContent;
+    backlink?: BaseLink;
+}
+
+const { seo, page, backlink } = Astro.props;
+---
+
+<BaseLayout
+  seo={{
+    title: seo.title,
+    description: seo.description,
+    image: seo.image
+  }}
+>
+  <section class="container mx-auto px-4 py-3">
+    <div class="container mx-auto mt-4 px-4 md:px-6">
+        <PageHeader title={page.title} subtitle={page.subtitle} backlink={backlink}></PageHeader>
+        <slot />
+    </div>
+  </section>
+</BaseLayout>

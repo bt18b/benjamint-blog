@@ -1,8 +1,7 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageLayout from "@/components/page/PageLayout.astro";
 import { buttonVariants } from "@/components/ui/button";
 import { projectsPageContent } from "@/config";
-import { Button } from "@/components/ui/button";
 
 const projectsPerPage = 6;
 const pageParam = Astro.url.searchParams.get("page");
@@ -13,56 +12,46 @@ const totalPages = Math.ceil(totalProjects / projectsPerPage);
 const start = (currentPage - 1) * projectsPerPage;
 const end = start + projectsPerPage;
 const paginatedProjects = projectsPageContent.projects.slice(start, end);
+
+const { seo, page } = projectsPageContent;
 ---
 
-<BaseLayout
-  seo={{
-    title: "Projects | Your Name",
-    description: projectsPageContent.seo.description,
-    image: "og-image.png"
-  }}
+<PageLayout
+  seo={seo}
+  page={page}
 >
-  <section class="container mx-auto px-4 py-12">
-    <div class="text-center mb-12">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4">{projectsPageContent.subtitle}</h1>
-      <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-        {projectsPageContent.seo.description}
-      </p>
-    </div>
-
-    <!-- Project Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {paginatedProjects.map((project) => (
-        <div class="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 flex flex-col h-full">
-          <img
-            src={project.image}
-            alt={project.title}
-            class="w-full h-48 object-cover"
-          />
-          <div class="p-6 flex flex-col flex-grow">
-            <h2 class="text-xl font-bold mb-2 line-clamp-2">{project.title}</h2>
-            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">{project.year}</p>
-            <p class="text-gray-600 dark:text-gray-300 mb-4 flex-grow line-clamp-3">{project.description}</p>
-            <a href={project.url} target="_blank" class={buttonVariants({ variant: 'default' }) + " mt-auto"}>
-              View Project
-            </a>
-          </div>
+  <!-- Project Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {paginatedProjects.map((project) => (
+      <div class="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 flex flex-col h-full">
+        <img
+          src={project.image}
+          alt={project.title}
+          class="w-full h-48 object-cover"
+        />
+        <div class="p-6 flex flex-col flex-grow">
+          <h2 class="text-xl font-bold mb-2 line-clamp-2">{project.title}</h2>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">{project.year}</p>
+          <p class="text-gray-600 dark:text-gray-300 mb-4 flex-grow line-clamp-3">{project.description}</p>
+          <a href={project.url} target="_blank" class={buttonVariants({ variant: 'default' }) + " mt-auto"}>
+            View Project
+          </a>
         </div>
-      ))}
-    </div>
+      </div>
+    ))}
+  </div>
 
-    <!-- Pagination -->
-    <div class="flex justify-center mt-12 space-x-4">
-      {currentPage > 1 && (
-        <a href={`/projects?page=${currentPage - 1}`} class={buttonVariants({ variant: 'outline' })}>
-          Previous
-        </a>
-      )}
-      {currentPage < totalPages && (
-        <a href={`/projects?page=${currentPage + 1}`} class={buttonVariants({ variant: 'outline' })}>
-          Next
-        </a>
-      )}
-    </div>
-  </section>
-</BaseLayout>
+  <!-- Pagination -->
+  <div class="flex justify-center mt-12 space-x-4">
+    {currentPage > 1 && (
+      <a href={`/projects?page=${currentPage - 1}`} class={buttonVariants({ variant: 'outline' })}>
+        Previous
+      </a>
+    )}
+    {currentPage < totalPages && (
+      <a href={`/projects?page=${currentPage + 1}`} class={buttonVariants({ variant: 'outline' })}>
+        Next
+      </a>
+    )}
+  </div>
+</PageLayout>

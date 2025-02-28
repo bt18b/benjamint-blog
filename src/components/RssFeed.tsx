@@ -4,8 +4,7 @@ import { Rss } from "lucide-react";
 
 const RssFeedButton: React.FC = () => {
   const handleClick = () => {
-    // TODO: add functionality to RssFeed for posts
-    console.log('RssFeed')
+    window.location.href = '/rss.xml';
   };
 
   return (

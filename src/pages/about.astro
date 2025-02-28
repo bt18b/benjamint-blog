@@ -1,58 +1,63 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageLayout from "@/components/page/PageLayout.astro";
 import { buttonVariants } from "@/components/ui/button";
+import { position, aboutPageContent } from "@/config";
+
+const { seo, page } = aboutPageContent;
 ---
 
-<BaseLayout
-  seo={{
-    title: "About Benjamin Tannheimer | Web Developer",
-    description: "Learn about Benjamin Tannheimer, a passionate software developer specializing in web technologies, open-source projects, and automation.",
-    image: "og-image.png"
-  }}
+<PageLayout
+  seo={seo}
+  page={page}
 >
-  <section class="container mx-auto px-4 py-12">
-    <div class="text-center mb-12">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4">Hi, I'm Benjamin Tannheimer 👋</h1>
-      <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-        Passionate software developer with a love for web technologies, open-source projects, and automation.
+  <div class="text-center mb-12">
+    <div class="inline-flex items-center px-4 py-2 rounded-full border">
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+        {position.position} 
+        <a 
+          href={position.url} 
+          class="font-medium text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors duration-200"
+        >
+          @{position.title}
+        </a>
+      </p>
+    </div>      
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 p-6">
+      <h2 class="text-2xl font-bold mb-4">My Background</h2>
+      <p class="text-gray-600 dark:text-gray-300">
+        With a background in full-stack development, I specialize in building scalable web applications using 
+        technologies like Astro, React, TypeScript, and Node.js. I enjoy solving complex problems, optimizing 
+        performance, and contributing to open-source communities.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 p-6">
-        <h2 class="text-2xl font-bold mb-4">My Background</h2>
-        <p class="text-gray-600 dark:text-gray-300">
-          With a background in full-stack development, I specialize in building scalable web applications using 
-          technologies like Astro, React, TypeScript, and Node.js. I enjoy solving complex problems, optimizing 
-          performance, and contributing to open-source communities.
-        </p>
-      </div>
-
-      <div class="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 p-6">
-        <h2 class="text-2xl font-bold mb-4">What You'll Find Here</h2>
-        <ul class="list-disc pl-6 text-gray-600 dark:text-gray-300">
-          <li>Deep dives into JavaScript, TypeScript, and modern frameworks</li>
-          <li>Coding best practices and performance optimizations</li>
-          <li>Tooling & automation tips to streamline development workflows</li>
-          <li>My learnings from projects, experiments, and mistakes</li>
-        </ul>
-      </div>
+    <div class="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 p-6">
+      <h2 class="text-2xl font-bold mb-4">What You'll Find Here</h2>
+      <ul class="list-disc pl-6 text-gray-600 dark:text-gray-300">
+        <li>Deep dives into JavaScript, TypeScript, and modern frameworks</li>
+        <li>Coding best practices and performance optimizations</li>
+        <li>Tooling & automation tips to streamline development workflows</li>
+        <li>My learnings from projects, experiments, and mistakes</li>
+      </ul>
     </div>
+  </div>
 
-    <div class="mt-12 text-center">
-      <h2 class="text-2xl font-bold mb-4">Let's Connect</h2>
-      <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-6">
-        I'm always open to discussing new ideas, collaborating on projects, or just chatting about the latest in tech.
-        Feel free to connect with me on GitHub, Twitter, or LinkedIn!
-      </p>
-      <a 
-        href="https://github.com/maxmustermann"
-        target="_blank"
-        rel="noreferrer"
-        class={buttonVariants({ variant: 'default' })}
-      >
-        Visit My GitHub
-      </a>
-    </div>
-  </section>
-</BaseLayout>
+  <div class="mt-12 text-center">
+    <h2 class="text-2xl font-bold mb-4">Let's Connect</h2>
+    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-6">
+      I'm always open to discussing new ideas, collaborating on projects, or just chatting about the latest in tech.
+      Feel free to connect with me on GitHub, Twitter, or LinkedIn!
+    </p>
+    <a 
+      href="https://github.com/maxmustermann"
+      target="_blank"
+      rel="noreferrer"
+      class={buttonVariants({ variant: 'default' })}
+    >
+      Visit My GitHub
+    </a>
+  </div>
+</PageLayout>

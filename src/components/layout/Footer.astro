@@ -1,0 +1,67 @@
+---
+import { icons, AlertTriangle } from 'lucide-react';
+import { identity, socialLinks } from '@/config';
+import getUnicodeFlagIcon from 'country-flag-icons/unicode'
+
+const currentYear = new Date().getFullYear();
+const flagIcon = getUnicodeFlagIcon(identity.countryCode)
+const flagUrl = `https://purecatamphetamine.github.io/country-flag-icons/3x2/${identity.countryCode}.svg`;
+---
+
+<footer class="border-t py-6 md:py-8 lg:py-10">
+  <div class="container mx-auto px-4 flex flex-col items-center justify-between gap-6 sm:px-6 lg:px-8">
+    <div class="w-full flex flex-col items-center justify-between gap-6 lg:flex-row">
+      <p class="text-muted-foreground text-sm leading-loose lg:text-left flex items-center justify-center lg:justify-start gap-2">
+        <img
+          src={flagUrl}
+          alt={identity.country}
+          height="24"
+          width="24"
+          class="rounded-xs shadow-md inline-block"
+        />
+        <span>©{currentYear} {identity.name}. All rights reserved.</span>
+      </p>
+      
+      <nav aria-label="Social media links" class="flex space-x-4">
+        {socialLinks.map(({ url, icon, title }) => {
+          const LucideIcon = icons[icon as keyof typeof icons] || AlertTriangle;
+          
+          if (!icons[icon as keyof typeof icons]) {
+            console.warn(`⚠️ Icon "${icon}" not found in lucide-react. Using fallback.`);
+          }
+
+          return (
+            <a
+              href={url}
+              target="_blank"
+              rel="noreferrer"
+              class="text-muted-foreground hover:text-foreground transition-colors duration-200"
+              aria-label={title}
+            >
+              <LucideIcon className="h-5 w-5" />
+            </a>
+          );
+        })}
+      </nav>
+
+      <p class="text-muted-foreground text-center text-sm leading-loose lg:text-right">
+        Built with <a href="https://astro.build/" class="font-medium underline underline-offset-4 hover:text-foreground transition-colors duration-200">Astro</a> and 
+        <a href="https://ui.shadcn.com/" class="font-medium underline underline-offset-4 hover:text-foreground transition-colors duration-200">shadcn</a>. 
+        <a
+          href="https://github.com/maxmustermann/blog"
+          target="_blank"
+          rel="noreferrer"
+          class="font-medium underline underline-offset-4 hover:text-foreground transition-colors duration-200"
+        >Code</a>.
+        <a
+          href="/credits"
+          class="font-medium underline underline-offset-4 hover:text-foreground transition-colors duration-200"
+        >Credits</a>.
+        <a
+          href="/privacy"
+          class="font-medium underline underline-offset-4 hover:text-foreground transition-colors duration-200"
+        >Privacy</a>.
+      </p>
+    </div>
+  </div>
+</footer>

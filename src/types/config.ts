@@ -1,20 +1,25 @@
-export type NavBarLink = {
+  export type BaseLink = {
     title: string;
     url: string;
     external?: boolean;
   };
+
+  export type NavBarLink = BaseLink & {};
   
-  export type SocialLink = {
-    title: string;
-    url: string;
+  export type SocialLink = BaseLink & {
     icon: string;
-    external?: boolean;
   };
   
+  export type Position = BaseLink & {
+    position: string;
+  }
+
   export type Identity = {
     name: string;
     logo: string;
     email: string;
+    countryCode: string;
+    country: string;
   };
   
   export type SEOInfo = {
@@ -23,8 +28,18 @@ export type NavBarLink = {
     image: string;
   };
   
-  export type HomePageContent = {
+  export type PageContent = {
+    title: string;
+    subtitle?: string;
+  }
+
+  export type BasePage = {
     seo: SEOInfo;
+    page: PageContent;
+    backlink?: BaseLink;
+  }
+
+  export type HomePageContent = BasePage & {
     role: string;
     description: string;
     socialLinks: SocialLink[];
@@ -35,19 +50,7 @@ export type NavBarLink = {
     }[];
   };
   
-  export type ResumeItem = {
-    title: string;
-    company: {
-      name: string;
-      image: string;
-      url: string;
-    };
-    date: string;
-  };
-  
-  export type AboutPageContent = {
-    seo: SEOInfo;
-    subtitle: string;
+  export type AboutPageContent = BasePage & {
     about: {
       description: string;
     };
@@ -69,13 +72,24 @@ export type NavBarLink = {
     url: string;
   };
   
-  export type ProjectPageContent = {
-    seo: SEOInfo;
-    subtitle: string;
+  export type ProjectPageContent = BasePage & {
     projects: Project[];
   };
   
-  export type BlogPageContent = {
-    seo: SEOInfo;
-    subtitle: string;
+  export type BlogPageContent = BasePage & {};
+
+  export type CreditPageContent = BasePage & {};
+
+  export type ContactPageContent = BasePage & {};
+
+  export type NotFoundPageContent = BasePage & {};
+
+  export type ResumeItem = {
+    title: string;
+    company: {
+      name: string;
+      image: string;
+      url: string;
+    };
+    date: string;
   };
