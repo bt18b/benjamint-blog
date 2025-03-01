@@ -1,6 +1,6 @@
-# Astro Shadcn UI Template
+# Blog Template with Astro Shadcn UI Template
 
-This template helps you build apps with Astro, Tailwind CSS, and Shadcn UI.
+This template helps you build a blog with Astro, Tailwind CSS, and Shadcn UI.
 
 ## Getting Started
 

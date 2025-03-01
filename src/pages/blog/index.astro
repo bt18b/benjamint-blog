@@ -1,5 +1,5 @@
 ---
-import PageLayout from "@/components/page/PageLayout.astro";
+import PageLayout from "@/layouts/PageLayout.astro";
 import { buttonVariants } from "@/components/ui/button";
 import { Image } from "astro:assets";
 import { getPosts } from "@/lib/getPosts";
@@ -16,8 +16,8 @@ const { seo, page } = blogPageContent;
 >
   <!-- Blog Post Grid -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {posts.map((post) => (
-      <a href={`/blog/${post.id}`} class="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 flex flex-col h-full">
+    {posts.map((post: any) => (
+      <a href={`/blog/${post.slug}`} class="border rounded-lg shadow-md hover:shadow-lg overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition duration-300 flex flex-col h-full">
         <Image
           src={post.data.image.url}
           alt={post.data.image.alt}
