@@ -14,9 +14,19 @@
     position: string;
   }
 
+  export type Technology = {
+    name: string;
+    image: string;
+  }
+
+  export type Certificate = {
+    name: string;
+    image: string;
+  }
+
   export type Identity = {
     name: string;
-    logo: string;
+    avatar: string;
     email: string;
     countryCode: string;
     country: string;
@@ -78,7 +88,7 @@
   
   export type BlogPageContent = BasePage & {};
 
-  export type CreditPageContent = BasePage & {};
+  export type CreditsPageContent = BasePage & {};
 
   export type ContactPageContent = BasePage & {};
 

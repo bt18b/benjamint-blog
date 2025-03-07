@@ -19,6 +19,7 @@ const postsCollection = defineCollection({
       alt: z.string(),
     }),
     readingTime: z.number().optional(),
+    tags: z.array(z.string())
   }),
 });
 

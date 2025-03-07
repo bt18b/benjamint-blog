@@ -62,7 +62,7 @@ const { Content } = await post.render();
     />
     <div class="flex items-center gap-4 mt-8 mb-6 p-4 border rounded-lg">
       <Image
-        src={post.data.author?.image.url || identity.logo}
+        src={post.data.author?.image.url || identity.avatar}
         alt={post.data.author?.image.alt || identity.name}
         width={64}
         height={64}

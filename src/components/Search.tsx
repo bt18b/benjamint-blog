@@ -106,13 +106,13 @@ export const Search = () => {
 			<div className="w-full flex-1 md:w-auto md:flex-none">
       <button
         onClick={() => openSearchBar(true)}
-        className="focus-visible:ring-ring border-input hover:bg-accent hover:text-accent-foreground bg-black text-white relative inline-flex h-8 w-full items-center justify-start gap-2 rounded-[0.5rem] border px-4 py-2 text-sm font-normal whitespace-nowrap shadow-none transition-colors focus-visible:ring-1 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 sm:pr-12 md:w-40 lg:w-56 xl:w-64 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"
+        className="focus-visible:ring-ring border-input hover:bg-accent hover:text-accent-foreground bg-background text-foreground relative inline-flex h-8 w-full items-center justify-start gap-2 rounded-[0.5rem] border px-4 py-2 text-sm font-normal whitespace-nowrap shadow-none transition-colors focus-visible:ring-1 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 sm:pr-12 md:w-40 lg:w-56 xl:w-64 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"
       >
         <span className="hidden lg:inline-flex">
           Search blog posts...
         </span>
         <span className="inline-flex lg:hidden">Search...</span>
-        <kbd className="text-white pointer-events-none absolute top-[0.3rem] right-[0.3rem] hidden h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none sm:flex">
+        <kbd className="text-foreground pointer-events-none absolute top-[0.3rem] right-[0.3rem] hidden h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none sm:flex">
           <span className="text-xs">⌘</span>K
         </kbd>
       </button>

@@ -4,10 +4,12 @@ import type {
     SocialLink,
     Position,
     Identity,
+    Technology,
+    Certificate,
     AboutPageContent,
     ProjectPageContent,
     BlogPageContent,
-    CreditPageContent,
+    CreditsPageContent,
     ContactPageContent,
     NotFoundPageContent,
     HomePageContent,
@@ -22,11 +24,57 @@ import type {
 
   export const identity: Identity = {
     name: "Benjamin Tannheimer",
-    logo: "/pfp.jpg",
+    avatar: "/avatar.jpg",
     email: "benjamintannheimer [at] protonmail [dot] com",
     countryCode: "CH", // use the two letter iso code
     country: "Switzerland",
   };
+
+  export const technologies: Technology[] = [
+    {
+      name: "Test",
+      image: "/no-image.jpg",
+    },
+    {
+      name: "Test",
+      image: "/no-image.jpg",
+    },
+    {
+      name: "Test",
+      image: "/no-image.jpg",
+    },
+    {
+      name: "Test",
+      image: "/no-image.jpg",
+    },
+    {
+      name: "Test",
+      image: "/no-image.jpg",
+    },
+    {
+      name: "Test",
+      image: "/no-image.jpg",
+    },
+    {
+      name: "Test",
+      image: "/no-image.jpg",
+    },
+    {
+      name: "Test",
+      image: "/no-image.jpg",
+    },
+    {
+      name: "Test",
+      image: "/no-image.jpg",
+    }
+  ];
+
+  export const certificates: Certificate[] = [
+    {
+      name: "RHCSA",
+      image: "/no-image.jpg",
+    }
+  ]
   
   export const navBarLinks: NavBarLink[] = [
     {
@@ -78,11 +126,11 @@ import type {
       title: makeSEOTitle("Home", identity.name),
       description:
         "Employee from Switzerland who loves building cool things using code.",
-      image: identity.logo,
+      image: identity.avatar,
     },
     page: {
-      title: "Welcome to My Digital World",
-      subtitle: "Exploring the frontiers of web development and software engineering "
+      title: "Hi, I'm Ben. I'm a developer.",
+      subtitle: "I like building stuff."
     },
     role: "Student & Software Developer",
     description:
@@ -106,7 +154,7 @@ import type {
       title: makeSEOTitle("About", identity.name),
       description:
         "employee from Switzerland who loves building cool things using code.",
-      image: identity.logo,
+      image: identity.avatar,
     },
     page: {
       title: "Hi, I'm Benjamin Tannheimer 👋",
@@ -126,7 +174,7 @@ import type {
           title: "Software Developer",
           company: {
             name: "Freelance",
-            image: "/pfp.jpg",
+            image: "/avatar.jpg",
             url: "https://github.com/bt18b",
           },
           date: "2021 - Present",
@@ -135,7 +183,7 @@ import type {
           title: "Software Developer",
           company: {
             name: "Freelance",
-            image: "/pfp.jpg",
+            image: "/avatar.jpg",
             url: "https://github.com/bt18b",
           },
           date: "2019 - 2021",
@@ -153,7 +201,7 @@ import type {
     seo: {
       title: makeSEOTitle("Projects", identity.name),
       description: "Check out what I've been working on.",
-      image: identity.logo,
+      image: identity.avatar,
     },
     page: {
       title: "Projects",
@@ -189,7 +237,7 @@ import type {
     seo: {
       title: makeSEOTitle("Blog", identity.name),
       description: "Thoughts, stories and ideas.",
-      image: identity.logo,
+      image: identity.avatar,
     },
     page: {
       title: "Blog",
@@ -198,11 +246,11 @@ import type {
   };
 
   // Credits (/credits)
-  export const creditPageContent: CreditPageContent = {
+  export const creditsPageContent: CreditsPageContent = {
     seo: {
-      title: makeSEOTitle("Credit", identity.name),
+      title: makeSEOTitle("Credits", identity.name),
       description: "Credits",
-      image: identity.logo,
+      image: identity.avatar,
     },
     page: {
       title: "Credits",
@@ -215,7 +263,7 @@ import type {
     seo: {
       title: makeSEOTitle("Contact", identity.name),
       description: "Contact",
-      image: identity.logo,
+      image: identity.avatar,
     },
     page: {
       title: "Contact",
@@ -228,7 +276,7 @@ import type {
     seo: {
       title: makeSEOTitle("404", identity.name),
       description: "404",
-      image: identity.logo,
+      image: identity.avatar,
     },
     page: {
       title: "404",
