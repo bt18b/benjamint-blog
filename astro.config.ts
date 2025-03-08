@@ -2,7 +2,6 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
-import pdf from "astro-pdf"
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import pagefind from "astro-pagefind";
@@ -17,11 +16,7 @@ export default defineConfig({
   site: process.env.CI
     ? "https://benjamint.io"
     : "http://localhost:4321",
-  integrations: [react(), mdx(), pdf({
-    pages: {
-      "/resume": "resume.pdf"
-    }
-  }), sitemap({
+  integrations: [react(), mdx(), sitemap({
       filter: (page) => !page.includes("hidden__"),
   }), pagefind(), alpine()],
   vite: {
