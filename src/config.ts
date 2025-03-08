@@ -16,7 +16,10 @@ import type {
   } from "./types/config";
   
   export const position: Position = {
-    position: "ICT Systemspecialist I",
+    companyLogo: "/companylogo.jpg",
+    companyName: "Swiss Armed Forces",
+    companyLocation: "Berne, Switzerland",
+    jobTitle: "ICT Systemspecialist I",
     title: "Swiss Armed Forces",
     url: "https://www.vtg.admin.ch/en",
     external: true
@@ -69,7 +72,14 @@ import type {
   export const certificates: Certificate[] = [
     {
       name: "RHCSA",
-      image: "/no-image.jpg",
+      image: "/redhat.png",
+      title: "Credly",
+      url: "https://example.com",
+      external: true,
+    },
+    {
+      name: "CCNA",
+      image: "/cisco.jpg",
       title: "Credly",
       url: "https://example.com",
       external: true,

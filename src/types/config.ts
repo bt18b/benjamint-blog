@@ -11,7 +11,10 @@
   };
   
   export type Position = BaseLink & {
-    position: string;
+    companyLogo: string;
+    companyName: string;
+    companyLocation: string;
+    jobTitle: string;
   }
 
   export type Technology = {

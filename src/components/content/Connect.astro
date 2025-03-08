@@ -1,12 +1,14 @@
 ---
 import { buttonVariants } from "@/components/ui/button";
 import BentoBox from "@/components/layout/BentoBox.astro";
+import Header from "../page/Header.astro";
 ---
 
-<BentoBox className="text-center max-w-6xl mx-auto mt-12 p-8">
-    <h2 class="text-2xl font-bold mb-4">Let's Connect</h2>
+<Header title="Contact" subtitle="Let's Connect" />
+
+<BentoBox className="text-center max-w-6xl mx-auto mt-8">
     <p class="text-xl text-gray-600 dark:text-gray-400 mb-6">
-      Interested in collaborating or just want to say hi? I'm always open to new opportunities and connections.
+      Whether you're looking to explore a new project or simply want to chat, I'm eager to hear your ideas and discuss potential opportunities.
     </p>
     <a 
       href="/contact"

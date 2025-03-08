@@ -1,34 +1,49 @@
 ---
-import { buttonVariants } from "@/components/ui/button";
-import { identity } from '@/config';
+import { identity, position } from '@/config';
 import BentoBox from '@/components/layout/BentoBox.astro';
 
-const profile = {
-  stats: [
-    { label: "Posts", value: 4 },
-    { label: "Projects", value: 3 },
-    { label: "Bounties", value: 0 },
-  ],
+// const profile = {
+//   stats: [
+//     { label: "Posts", value: 4 },
+//     { label: "Projects", value: 3 },
+//     { label: "Bounties", value: 0 },
+//   ],
+// };
+const company = {
+  name: "Acme Corp",
+  jobTitle: "Software Engineer",
+  logo: "/no-image.jpg",
+  location: "San Francisco, CA",
 };
 ---
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-  <BentoBox>
-  <img src={identity.avatar} alt={identity.name} class="w-32 h-32 rounded-full border-1 shadow-xs" />
-
-  <!-- Name -->
-  <h2 class="mt-6 text-2xl font-bold text-foreground">{identity.name}</h2>
-
-  <p class="mt-3 text-sm text-gray-400">{identity.name}</p>
+  {/* Profile Details: Avatar on the left, name on the right */}
+  <BentoBox className="flex items-center p-6">
+    <img 
+      src={identity.avatar} 
+      alt={identity.name} 
+      class="w-32 h-32 rounded-full border shadow-xs" 
+    />
+    <div class="ml-6">
+      <h2 class="text-2xl font-bold text-foreground">{identity.name}</h2>
+      <p class="mt-2 text-sm text-gray-400">{identity.name}</p>
+    </div>
   </BentoBox>
 
-  <BentoBox>
-    <div class="flex justify-center mt-6 space-x-8">
-      {profile.stats.map((stat) => (
-        <div class="flex flex-col items-center">
-          <span class="text-2xl font-bold text-foreground">{stat.value}</span>
-          <span class="text-sm text-gray-400">{stat.label}</span>
-        </div>
-      ))}
-    </div>
+  {/* Profile Stats */}
+  <BentoBox className="p-6">
+    <div class="flex items-center">
+      <img 
+        src={position.companyLogo} 
+        alt={position.companyName} 
+        class="w-32 h-32 object-cover rounded-full"
+      />
+      <div class="ml-4">
+        <p class="text-lg font-bold text-foreground">
+          Currently working at {position.companyName} as {position.jobTitle}
+        </p>
+        <p class="text-sm text-gray-400">{position.companyLocation}</p>
+      </div>
+    </div>  
   </BentoBox>
 </div>

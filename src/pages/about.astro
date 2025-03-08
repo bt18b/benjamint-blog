@@ -8,20 +8,6 @@ const { seo, page } = aboutPageContent;
 ---
 
 <PageLayout seo={seo} page={page}>
-  
-  <!-- Position Info -->
-  <BentoBox className="text-center mb-12 inline-flex items-center px-4 py-2 rounded-full justify-center border">
-    <p class="text-sm text-gray-600 dark:text-gray-400">
-      {position.position} 
-      <a 
-        href={position.url} 
-        class="font-medium text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors duration-200"
-      >
-        @{position.title}
-      </a>
-    </p>
-  </BentoBox>
-
   <!-- About Grid -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     
