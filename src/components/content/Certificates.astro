@@ -4,12 +4,28 @@ import { certificates } from '@/config';
 import Header from '@/components/page/Header.astro';
 ---
 
-<Header title="Certificates" subtitle="My certifications." />
+<Header title="Certificates" subtitle="My certificates." />
 
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-8 mt-8">
-    {certificates.map((tech) => (
-        <BentoBox className="p-0 overflow-hidden aspect-square" padding={false}>
-            <img src={tech.image} alt={tech.name} class="w-full h-full object-cover" />
-        </BentoBox>
-    ))}
+  {certificates.map((cert) => (
+    <BentoBox className="p-0 overflow-hidden aspect-square" padding>
+      <div class="flex flex-col h-full p-4">
+        <img
+          src={cert.image}
+          alt={cert.name}
+          loading="lazy"
+          class="h-16 w-16 rounded-3xl object-cover"
+        />
+        <h2 class="mt-4 text-xl font-semibold">{cert.name}</h2>
+        <a
+          href={cert.url} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="mt-2 px-4 py-1 text-background bg-foreground text-sm font-bold rounded-full"
+        >
+          {cert.title}
+        </a>
+      </div>
+    </BentoBox>
+  ))}
 </div>

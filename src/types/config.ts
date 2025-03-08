@@ -19,7 +19,7 @@
     image: string;
   }
 
-  export type Certificate = {
+  export type Certificate = BaseLink & {
     name: string;
     image: string;
   }
@@ -28,6 +28,7 @@
     name: string;
     avatar: string;
     email: string;
+    utcDiff: number;
     countryCode: string;
     country: string;
   };

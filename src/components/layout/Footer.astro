@@ -19,7 +19,7 @@ const flagUrl = `https://purecatamphetamine.github.io/country-flag-icons/3x2/${i
           width="24"
           class="rounded-xs shadow-md inline-block"
         />
-        <span>©{currentYear} {identity.name}. All rights reserved.</span>
+        <span>(UTC{identity.utcDiff > 0 && "+"}{identity.utcDiff}) ©{currentYear} {identity.name}. All rights reserved.</span>
       </p>
       
       <nav aria-label="Social media links" class="flex space-x-4">

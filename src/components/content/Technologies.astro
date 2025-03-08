@@ -7,9 +7,17 @@ import Header from '@/components/page/Header.astro';
 <Header title="Technologies" subtitle="What I've been using in my projects." />
 
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-8 mt-8">
-    {technologies.map((tech) => (
-        <BentoBox className="p-0 overflow-hidden aspect-square" padding={false}>
-            <img src={tech.image} alt={tech.name} class="w-full h-full object-cover" />
-        </BentoBox>
-    ))}
+  {technologies.map((tech) => (
+    <BentoBox className="p-0 overflow-hidden aspect-square" padding>
+      <div class="flex flex-col h-full p-4">
+        <img
+          src={tech.image}
+          alt={tech.name}
+          loading="lazy"
+          class="h-16 w-16 rounded-3xl object-cover"
+        />
+        <h2 class="mt-4 text-xl font-semibold">{tech.name}</h2>
+      </div>
+    </BentoBox>
+  ))}
 </div>

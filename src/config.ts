@@ -26,46 +26,43 @@ import type {
     name: "Benjamin Tannheimer",
     avatar: "/avatar.jpg",
     email: "benjamintannheimer [at] protonmail [dot] com",
+    utcDiff: 1,
     countryCode: "CH", // use the two letter iso code
     country: "Switzerland",
   };
 
   export const technologies: Technology[] = [
     {
-      name: "Test",
-      image: "/no-image.jpg",
+      name: "JavaScript",
+      image: "/JavaScript-logo.png",
     },
     {
-      name: "Test",
-      image: "/no-image.jpg",
+      name: "JavaScript",
+      image: "/JavaScript-logo.png",
     },
     {
-      name: "Test",
-      image: "/no-image.jpg",
+      name: "JavaScript",
+      image: "/JavaScript-logo.png",
     },
     {
-      name: "Test",
-      image: "/no-image.jpg",
+      name: "JavaScript",
+      image: "/JavaScript-logo.png",
     },
     {
-      name: "Test",
-      image: "/no-image.jpg",
+      name: "JavaScript",
+      image: "/JavaScript-logo.png",
     },
     {
-      name: "Test",
-      image: "/no-image.jpg",
+      name: "JavaScript",
+      image: "/JavaScript-logo.png",
     },
     {
-      name: "Test",
-      image: "/no-image.jpg",
+      name: "JavaScript",
+      image: "/JavaScript-logo.png",
     },
     {
-      name: "Test",
-      image: "/no-image.jpg",
-    },
-    {
-      name: "Test",
-      image: "/no-image.jpg",
+      name: "JavaScript",
+      image: "/JavaScript-logo.png",
     }
   ];
 
@@ -73,6 +70,9 @@ import type {
     {
       name: "RHCSA",
       image: "/no-image.jpg",
+      title: "Credly",
+      url: "https://example.com",
+      external: true,
     }
   ]
   
