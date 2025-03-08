@@ -1,5 +1,5 @@
 ---
-import { Github, Twitter, Linkedin } from 'lucide-react';
+import { buttonVariants } from "@/components/ui/button";
 import { identity } from '@/config';
 import BentoBox from '@/components/layout/BentoBox.astro';
 
@@ -11,25 +11,24 @@ const profile = {
   ],
 };
 ---
-
-<!-- <div class="flex flex-col items-center shadow-xl rounded-3xl p-8 mx-auto text-center border"> -->
-
-<BentoBox className="max-w-6xl mx-auto">
-  <!-- Profile Image -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+  <BentoBox>
   <img src={identity.avatar} alt={identity.name} class="w-32 h-32 rounded-full border-1 shadow-xs" />
 
   <!-- Name -->
   <h2 class="mt-6 text-2xl font-bold text-foreground">{identity.name}</h2>
 
   <p class="mt-3 text-sm text-gray-400">{identity.name}</p>
+  </BentoBox>
 
-  <!-- Stats -->
-  <div class="flex justify-center mt-6 space-x-8">
-    {profile.stats.map((stat) => (
-      <div class="flex flex-col items-center">
-        <span class="text-2xl font-bold text-foreground">{stat.value}</span>
-        <span class="text-sm text-gray-400">{stat.label}</span>
-      </div>
-    ))}
-  </div>
-</BentoBox>
+  <BentoBox>
+    <div class="flex justify-center mt-6 space-x-8">
+      {profile.stats.map((stat) => (
+        <div class="flex flex-col items-center">
+          <span class="text-2xl font-bold text-foreground">{stat.value}</span>
+          <span class="text-sm text-gray-400">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+  </BentoBox>
+</div>
