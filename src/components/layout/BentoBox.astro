@@ -2,11 +2,81 @@
 interface Props {
   className?: string;
   padding?: boolean;
+  flippable?: boolean;
 }
 
-const { className = "", padding = true } = Astro.props;
+const { className = "", padding = true, flippable = false } = Astro.props;
 ---
 
-<div class={`rounded-3xl shadow-sm ${padding && "p-6"} border bg-background ${className}`}>
-  <slot />
-</div>
+{flippable ? (
+  // Outer container providing perspective and interactivity
+  <div 
+    class={`flip-card ${className} rounded-3xl`}
+    x-data="{ flipped: false }"
+    :class="{ 'flipped': flipped }"
+    @click="flipped = !flipped"
+    @mouseenter="flipped = true"
+    @mouseleave="flipped = false"
+  >
+    <div class="flip-card-inner rounded-3xl">
+      {/* Front face with full size */}
+      <div class="flip-card-front shadow-sm rounded-3xl border bg-background w-full h-full">
+        <div class={`${padding ? "p-6" : ""} w-full h-full rounded-3xl`}>
+          <slot name="front" />
+        </div>
+      </div>
+      {/* Back face with full size */}
+      <div class="flip-card-back shadow-sm rounded-3xl border bg-background w-full h-full">
+        <div class={`${padding ? "p-6" : ""} w-full h-full rounded-3xl`}>
+          <slot name="back" />
+        </div>
+      </div>
+    </div>
+  </div>
+) : (
+  // Non-flippable version: a single bento with the full styling
+  <div class={`rounded-3xl shadow-sm border bg-background ${className} ${padding ? "p-6" : ""}`}>
+    <slot />
+  </div>
+)}
+
+<style>
+  .flip-card {
+    perspective: 1000px;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: visible;
+  }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* Removed object-fit: cover; as it's not appropriate for a container */
+    text-align: center;
+    transition: transform 0.6s ease-in-out;
+    transform-style: preserve-3d;
+    overflow: visible;
+  }
+
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+</style>
